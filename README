@@ -1,6 +1,6 @@
 Command-line password generator.
 
-Enter site name and password. It will generate unique secure password for this combination.
+Enter site name and password. It will generate unique secure password for this combination. This way you can have single password but submit different ones for each website.
 
 Install mozrepl extension for firefox if you want site to be autofilled from current open browser tab.
 
@@ -9,6 +9,6 @@ kef@ivan-laptop:~/pw$ ./pw
 Site (github.com): /just press enter to use github.com/
 Password: 12345 /hidden/
 Password: /just press enter or type password again to be sure/
-Z10PX2VD
+Z10PX2VD /password generated for github.com:12345/
 </code>
 
