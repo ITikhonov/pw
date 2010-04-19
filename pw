@@ -1,0 +1,27 @@
+#!/usr/bin/python
+
+from hashlib import md5
+from getpass import getpass
+from os import popen
+
+s='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZZZ'
+
+dsite=popen("""echo content.location.host | nc -q 1 localhost 4242 2>/dev/null|tail -2|head -1|sed 's/repl> "//'|sed 's/"$//'""").read(1024)
+
+try:
+	dsite=dsite[:-1].split('.')
+	dsite=dsite[-2]+'.'+dsite[-1]
+except:
+	dsite=''
+
+site=raw_input('Site (%s): '%(dsite,))
+if len(site)==0: site=dsite
+
+y=getpass()
+z=getpass()
+if z!='' and y != z:
+	print "NOT EQUAL!"
+	exit(1)
+p="".join([s[ord(x)>>2] for x in md5(site+md5(y).hexdigest()).digest()[:8]])
+print p
+
